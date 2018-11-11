@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:XFEmptyListMessage.Controls"
+    xmlns:local="clr-namespace:XFEmptyListMessage"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+    ios:Page.UseSafeArea="true"
+    x:Class="XFEmptyListMessage.ReusableWayPage">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <controls:StaticListViewWithEmptyMessage
+            EmptyMessage="Sorry, it seems that the list is empty.">
+            <controls:StaticListViewWithEmptyMessage.ListView>
+                <ListView ItemsSource="{Binding Data}" />
+            </controls:StaticListViewWithEmptyMessage.ListView>
+        </controls:StaticListViewWithEmptyMessage>
+        <StackLayout
+            Grid.Row="1"
+            Orientation="Vertical">
+            <Button Text="Set not empty list" Command="{Binding SetNotEmpyListCommand}" />
+            <Button Text="Set empty list" Command="{Binding SetEmptyListCommand}" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
